@@ -8,11 +8,16 @@
 
 
 #emc_button {
-  background-image: "./assets/emc_button.png";
+  background-image: url("../../public/emc_button.png");
   background-color: grey;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
   border-color: maroon;
   border-style: solid;
   border-radius: 40px;
+  width: 30%;
+  height: 100px;
 }
 
 
