@@ -4,13 +4,14 @@ import {explode} from './Explosion';
 
 export class IncomingMissile {
 
-  constructor(startX, startY, targetX, targetY) {
+  constructor(startX, startY, targetX, targetY, target) {
     this.startX = startX;
     this.startY = startY;
     this.targetX = targetX;
     this.targetY = targetY;
     this.currentX = startX;
     this.currentY = startY;
+    this.target = target;
   }
 
   update() {
@@ -25,6 +26,7 @@ export class IncomingMissile {
     //console.log("Target Y = " + this.targetY);
     //console.log("Current Y = " + this.currentY);
     if (this.currentY >= this.targetY){
+      this.target.health -= 30;
       return true;
     }
 
@@ -38,8 +40,8 @@ function updateIncoming(incoming, explosions, score) {
   });
 
   incoming = incoming.filter(function(value) {
-    //Check if it hit target or if it hit an explosion.
 
+    //Check if any outgoing missiles stopped this incoming missile
     for (var i = 0; i < explosions.length; i++) {
       var x_dist = value.currentX - explosions[i].x;
       var y_dist = value.currentY - explosions[i].y;
@@ -55,7 +57,12 @@ function updateIncoming(incoming, explosions, score) {
       }
     }
 
-    return !(value.didHitTarget());
+    //Reduce health of target
+    if (value.didHitTarget()) {
+      return false;
+    }
+
+    return true;
   })
 
   return [incoming, score];
@@ -76,10 +83,15 @@ function drawIncoming(incoming, app) {
 }
 
 function addIncomingMissile(incoming, missile_towers, app) {
-  let target = Math.floor(Math.random() * 3);
-  let targetX = missile_towers[target].sprite.x + (missile_towers[target].sprite.width / 2);
-  let targetY = missile_towers[target].sprite.y + (missile_towers[target].sprite.height / 2);
-  let newMissile = new IncomingMissile(Math.random() * app.view.width, 0, targetX, targetY);
+  if (missile_towers.length === 0) {
+    return;
+  }
+
+  let target_i = Math.floor(Math.random() * missile_towers.length);
+  let target = missile_towers[target_i];
+  let targetX = target.sprite.x + (target.sprite.width / 2);
+  let targetY = target.sprite.y + (target.sprite.height / 2);
+  let newMissile = new IncomingMissile(Math.random() * app.view.width, 0, targetX, targetY, target);
   incoming.push(newMissile);
 }
 

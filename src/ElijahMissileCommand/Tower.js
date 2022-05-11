@@ -13,10 +13,20 @@ class Tower {
   }
 }
 
+function updateTowers(towers) {
+  towers = towers.filter((value) => {
+    if (value.health < 0) {
+      return false;
+    }
+    return true;
+  })
+  return towers;
+}
+
 function drawTowers(towers, app) {
   towers.forEach((value, index) => {
     app.stage.addChild(value.sprite);
   });
 }
 
-export {Tower, drawTowers}
+export {Tower, drawTowers, updateTowers}

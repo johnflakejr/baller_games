@@ -11,7 +11,7 @@ Class to manage all game state, including:
 
 import { updateExplosions } from "./Explosion";
 import { updateOutgoing, updateIncoming } from "./Missile";
-import {Tower} from './Tower';
+import {Tower, updateTowers} from './Tower';
 
 export class GameState {
   constructor() {
@@ -22,8 +22,8 @@ export class GameState {
     this.explosions = [];
     this.towers = [];
     this.houses = [];
-
-    
+    this.missile_delay = 5;
+    this.active = true;
   }
   
   setupTowers(app) {
@@ -40,6 +40,7 @@ export class GameState {
   update() {
     this.explosions = updateExplosions(this.explosions);
     [this.incoming, this.score] = updateIncoming(this.incoming, this.explosions, this.score);
+    this.towers = updateTowers(this.towers);
     this.outgoing = updateOutgoing(this.outgoing, this.explosions);
   }
 }
