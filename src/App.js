@@ -1,5 +1,5 @@
 import './css/main.css';
-import {ElijahMissileCommand} from './ElijahMissileCommand';
+import {ElijahMissileCommand} from './ElijahMissileCommand/ElijahMissileCommand';
 import {Routes, Route, Link} from 'react-router-dom';
 
 
