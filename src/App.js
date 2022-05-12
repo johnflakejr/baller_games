@@ -1,5 +1,6 @@
 import './css/main.css';
 import {ElijahMissileCommand} from './ElijahMissileCommand/ElijahMissileCommand';
+import { Muth } from './TheMuthIsLuth/TheMuthIsLuth';
 import {Routes, Route, Link} from 'react-router-dom';
 
 
@@ -31,7 +32,9 @@ function Writeup() {
         </p>
       </div>
       <nav id="game_buttons">
-        <Link id="emc_button" to="/emc"></Link>
+        <Link class="game_button" id="emc_button" to="/emc"></Link>
+        <Link class="game_button" id="muth_button" to="/muth"></Link>
+        <Link class="game_button" id="chef_button" to="/muth"></Link>
       </nav>
     </div>
   );
@@ -43,6 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Writeup />} />
         <Route path="emc" element={<ElijahMissileCommand />} />
+        <Route path="muth" element={<Muth />} />
       </Routes>
     </div>
   );

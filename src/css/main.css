@@ -6,13 +6,9 @@
   margin: auto;
 }
 
-
-#emc_button {
-  background-image: url("../../public/emc_button.png");
-  background-color: grey;
-  background-size: cover;
+.game_button {
+  margin: auto;
   background-repeat: no-repeat;
-  background-position: bottom;
   border-color: maroon;
   border-style: solid;
   border-radius: 40px;
@@ -20,6 +16,26 @@
   height: 100px;
 }
 
+
+#emc_button {
+  background-image: url("../../public/emc_button.png");
+  background-color: grey;
+  background-size: cover;
+  background-position: bottom;
+}
+
+#chef_button {
+  background-image: url("../../public/chef_button.png");
+  background-size: contain;
+  background-position: center;
+}
+
+#muth_button {
+  background-image: url("../../public/muth_button.png");
+  background-color: black;
+  background-size: contain;
+  background-position: center;
+}
 
 #game_buttons {
   width: 60%;
