@@ -32,9 +32,9 @@ function Writeup() {
         </p>
       </div>
       <nav id="game_buttons">
-        <Link class="game_button" id="emc_button" to="/emc"></Link>
-        <Link class="game_button" id="muth_button" to="/muth"></Link>
-        <Link class="game_button" id="chef_button" to="/muth"></Link>
+        <Link className="game_button" id="emc_button" to="/emc"></Link>
+        <Link className="game_button" id="muth_button" to="/muth"></Link>
+        <Link className="game_button" id="chef_button" to="/muth"></Link>
       </nav>
     </div>
   );
